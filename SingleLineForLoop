@@ -1,0 +1,13 @@
+##########
+#
+# A nested iteration over the contents of a list of files to grep first 10 lines from an LZO file
+#
+#
+##########
+
+
+for file in `ls *.feature | sed -e 's/\.feature$//'`; \
+do for line in `cat $file.feature`; \
+do hadoop fs -text /kafka-bak/<FOLDER>/<FILENAME>.lzo | grep "\"componentType\":\"$file\"" | grep -m 2 "$line"; \
+done ; \
+done
